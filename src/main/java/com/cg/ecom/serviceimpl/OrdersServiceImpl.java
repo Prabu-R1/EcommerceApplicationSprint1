@@ -28,15 +28,15 @@ public class OrdersServiceImpl implements OrdersService {
 		Customers cust = new Customers();
 		cust.setCustomerId(ordersDTO.getCustomerId());
 		orders.setCustomers(cust);
-		orders.setDate(ordersDTO.getDate());
+//		orders.setDate(ordersDTO.getDate());
 		orders.setDeliveryAddress(ordersDTO.getDeliveryAddress());
 		orders.setStatus(ordersDTO.getStatus());
 		orders.setCartId(ordersDTO.getCartId());
 
 		ProductSupplier rest = new ProductSupplier();
-		rest.setId(ordersDTO.getProductSupplierId());
+		rest.setProductSupplierId(ordersDTO.getProductSupplierId());
 		orders.setProductSuppliers(rest);
-		orders.setDate(ordersDTO.getDate());
+//		orders.setDate(ordersDTO.getDate());
 		orders.setDeliveryAddress(ordersDTO.getDeliveryAddress());
 		orders.setStatus(ordersDTO.getStatus());
 		orders.setCartId(ordersDTO.getCartId());
@@ -56,11 +56,11 @@ public class OrdersServiceImpl implements OrdersService {
 		Orders orders = new Orders();
 		ProductSupplier rest = new ProductSupplier();
 		Customers cust = new Customers();
-		rest.setId(ordersDTO.getProductSupplierId());
+		rest.setProductSupplierId(ordersDTO.getProductSupplierId());
 		cust.setCustomerId(ordersDTO.getCustomerId());
 		orders.setProductSuppliers(rest);
 		orders.setCustomers(cust);
-		orders.setDate(ordersDTO.getDate());
+		//orders.setDate(ordersDTO.getDate());
 		orders.setDeliveryAddress(ordersDTO.getDeliveryAddress());
 		orders.setStatus(ordersDTO.getStatus());
 		orders.setOrderId(ordersDTO.getOrderId());

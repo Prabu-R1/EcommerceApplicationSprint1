@@ -39,7 +39,7 @@ public class CustomersServiceImpl implements CustomersService {
 		customers.setAddress(customersDto.getAddress());
 		customers.setEmailId(customersDto.getEmailId());
 		customers.setMobilenumber(customersDto.getMobilenumber());
-		customers.setName(customersDto.getName());
+		customers.setCustomerName(customersDto.getCustomerName());
 		customers.setCustomerId(customersDto.getCustomerId());
 		
 		Customers customersave =customerRepository.save(customers);
@@ -59,7 +59,7 @@ public class CustomersServiceImpl implements CustomersService {
 		customers.setAddress(customersDTO.getAddress());
 		customers.setEmailId(customersDTO.getEmailId());
 		customers.setMobilenumber(customersDTO.getMobilenumber());
-		customers.setName(customersDTO.getName());
+		customers.setCustomerName(customersDTO.getCustomerName());
 		
 		Customers saveId=customerRepository.save(customers);
 		customersDTO.setCustomerId(saveId.getCustomerId());

@@ -9,13 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductSupplierDTO {
 
-	private int id;
-	private String name;
+	private int productSupplierId;
+	private String productSupplierName;
 	private String location;
 	private Long contactNo;
-	private String emailId;
-	private String username;
-	private String password;
+	
+//	private String emailId;
+//	private String username;
+//	private String password;
 	private int userId;
 
 //	public int getUserId() {

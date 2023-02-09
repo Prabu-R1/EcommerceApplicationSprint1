@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class OrdersDTO {
 
 	private int orderId;
-	private LocalDate date;
+//	private LocalDate date;
 	private String status;
 	private String deliveryAddress;
 	private int customerId;

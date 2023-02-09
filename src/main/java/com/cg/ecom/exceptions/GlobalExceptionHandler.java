@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -29,12 +30,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		return new ResponseEntity<Object>(objectBody, status);
 	}
 	
-	@ExceptionHandler(ItemNotAvailableException.class)
-	public ResponseEntity<ExceptionResponse> handler(ItemNotAvailableException ex){
-		ExceptionResponse exception=new ExceptionResponse(ex.getMessage(),LocalDateTime.now(),HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response=new ResponseEntity<ExceptionResponse>(exception,HttpStatus.BAD_REQUEST);
-		return response;
-	}
+//	@ExceptionHandler(ItemNotAvailableException.class)
+//	public ResponseEntity<ExceptionResponse> handler(ItemNotAvailableException ex){
+//		ExceptionResponse exception=new ExceptionResponse(ex.getMessage(),LocalDateTime.now(),HttpStatus.BAD_REQUEST.value());
+//		ResponseEntity<ExceptionResponse> response=new ResponseEntity<ExceptionResponse>(exception,HttpStatus.BAD_REQUEST);
+//		return response;
+//	}
 	
 	
 	@ExceptionHandler(ProductSupplierNotAvailableException.class)
@@ -42,6 +43,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		ExceptionResponse exception=new ExceptionResponse(ex.getMessage(),LocalDateTime.now(),HttpStatus.BAD_REQUEST.value());
 		ResponseEntity<ExceptionResponse> response=new ResponseEntity<ExceptionResponse>(exception,HttpStatus.BAD_REQUEST);
 		return response;
+	}
+	
+	@Value(value="${message1}")
+	private String message1;
+	 @ExceptionHandler(value=ItemNotAvailableException.class)
+	public ResponseEntity customerNotFoundException(ItemNotAvailableException ex) {
+	return new ResponseEntity(message1,HttpStatus.NOT_FOUND);
 	}
 
 }

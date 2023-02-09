@@ -19,13 +19,13 @@ import com.cg.ecom.exceptions.ItemNotAvailableException;
 import com.cg.ecom.service.ProductItemsService;
 
 @RestController
-@RequestMapping("/api/fooditems")
+@RequestMapping("/api/product")
 public class ProductItemsController {
 
 	@Autowired
 	public ProductItemsService productItemsService;
 	
-	@PostMapping("/addFooditems")
+	@PostMapping("/addproductitems")
 	public ResponseEntity<ProductItemsDTO> addFoodItems(@RequestBody ProductItemsDTO productItemsDTO){
 		
 			ProductItemsDTO fooditems = productItemsService.addProductItems(productItemsDTO);
@@ -33,29 +33,29 @@ public class ProductItemsController {
 		
 	}
 
-	@GetMapping("/fetchFoodItemsById/{id}")
+	@GetMapping("/productItemsById/{id}")
 	public ResponseEntity<ProductItemsDTO> getfoodItemById(@PathVariable int id){
 		ProductItemsDTO productItemsDTO=productItemsService.getById(id);
 		return new ResponseEntity<ProductItemsDTO>(productItemsDTO, HttpStatus.FOUND);
 	}
 	
-	@PutMapping("/updateFoodItems")
+	@PutMapping("/updateProductItems")
 	public ResponseEntity<ProductItemsDTO> updateFoodItems(@RequestBody ProductItemsDTO productItemsDTO){
 		return new ResponseEntity<ProductItemsDTO>(productItemsService.updateProductItems(productItemsDTO), HttpStatus.ACCEPTED);
 		
 	}
 	
-	@DeleteMapping("/deleteFoodItems/{id}")
+	@DeleteMapping("/deleteProductItems/{id}")
 	public ResponseEntity<Boolean> deleteFoodItemsById(@PathVariable int id){
 		ProductItemsDTO productItemsDTO=productItemsService.getById(id);
 		if(productItemsDTO!=null) {
 			productItemsService.deleteProductItems(productItemsDTO);
 			return new ResponseEntity<Boolean>(true, HttpStatus.ACCEPTED);
 		}
-		throw new ItemNotAvailableException("FoodItems with id " +id+ "doesnot exists");
+		throw new ItemNotAvailableException("Items with id " +id+ "doesnot exists");
 	}
 	
-	@GetMapping("/fetchAllFoodItems")
+	@GetMapping("/fetchAllproductItems")
 	public ResponseEntity<List<ProductItemsDTO>> getAllFoodItems(){
 		List<ProductItemsDTO> list=productItemsService.findAll();
 		return ResponseEntity.ok(list);

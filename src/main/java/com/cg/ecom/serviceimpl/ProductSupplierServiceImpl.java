@@ -28,22 +28,22 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 	public ProductSupplierDTO addProductSupplier(ProductSupplierDTO productSupplierDto) {
 
 		User user=new User();
-		user.setPassword(productSupplierDto.getPassword());
+//		user.setPassword(productSupplierDto.getPassword());
 		user.setRole("OWNER");
-		user.setUsername(productSupplierDto.getUsername());		
+//		user.setUsername(productSupplierDto.getUsername());		
 
 		User userSave=userRepository.save(user);
 		ProductSupplier productSupplier = new ProductSupplier();
 		productSupplier.setUserId(userSave);
-		productSupplier.setName(productSupplierDto.getName());
-		productSupplier.setEmailId(productSupplierDto.getEmailId());
+		productSupplier.setProductSupplierName(productSupplierDto.getProductSupplierName());
+//		productSupplier.setEmailId(productSupplierDto.getEmailId());
 		productSupplier.setContactNo(productSupplierDto.getContactNo());
-        //productSupplier.setId(productSupplierDto.getId());
+        //productSupplier.setId(productSupplierDto.productSupplierId());
         productSupplier.setLocation(productSupplierDto.getLocation());
 		
         ProductSupplier productSupplierave=productSupplierRepository.save(productSupplier);
-        productSupplierDto.setUserId(userSave.getUserId());
-        productSupplierDto.setId(productSupplierave.getId());
+//        productSupplierDto.setUserId(userSave.getUserId());
+        productSupplierDto.setProductSupplierId(productSupplierave.getProductSupplierId());
 		return productSupplierDto;
 	}
 
@@ -52,11 +52,11 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 
 		ProductSupplier productSupplier = new ProductSupplier();
 		User user=new User();
-		user.setUserId(productSupplierDTO.getUserId());
+//		user.setUserId(productSupplierDTO.getUserId());
 		productSupplier.setUserId(user);
-		productSupplier.setId(productSupplierDTO.getId());
-		productSupplier.setName(productSupplierDTO.getName());
-		productSupplier.setEmailId(productSupplierDTO.getEmailId());
+		productSupplier.setProductSupplierId(productSupplierDTO.getProductSupplierId());
+		productSupplier.setProductSupplierName(productSupplierDTO.getProductSupplierName());
+//		productSupplier.setEmailId(productSupplierDTO.getEmailId());
 		productSupplier.setContactNo(productSupplierDTO.getContactNo());
 		productSupplier.setLocation(productSupplierDTO.getLocation());
 		
@@ -68,7 +68,7 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 	public boolean deleteProductSupplier(ProductSupplierDTO productSupplierDTO) {
 
 		ProductSupplier productSupplier = new ProductSupplier();
-		productSupplier.setId(productSupplierDTO.getId());
+		productSupplier.setProductSupplierId(productSupplierDTO.getProductSupplierId());
 		productSupplierRepository.delete(productSupplier);
 		return true;//write logic
 	}

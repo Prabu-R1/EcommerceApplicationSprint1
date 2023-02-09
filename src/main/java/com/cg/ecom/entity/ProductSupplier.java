@@ -20,8 +20,9 @@ public class ProductSupplier {
 	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private String name;
+	private int productSupplierId;
+	
+	private String productSupplierName;
 	private String location;
 	private Long contactNo;
 	private String emailId;

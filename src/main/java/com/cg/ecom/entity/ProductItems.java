@@ -22,14 +22,14 @@ public class ProductItems {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;	
-	private String name;
+	private int productId;	
+	private String ProductName;
 	private int price;
 	private int quantity;
 
 	
 	@ManyToOne
-	@JoinColumn(name="product_id")
+	@JoinColumn(name="product_supplier_id")
 	private ProductSupplier productSuppliers;
 
 

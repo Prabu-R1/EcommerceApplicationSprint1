@@ -32,7 +32,7 @@ public class CartServiceImpl implements CartService {
 		cart.setQuantity(cartDTO.getQuantity());
 
 		Cart cartsave = cartRepository.save(cart);
-		cartDTO.setCartId(cartsave.getId());
+		cartDTO.setCartId(cartsave.getCartId());
 		return cartDTO;
 
 //		Customers customer = customersRepository.findById(cartDTO.getCustomerId()).get();
@@ -57,7 +57,7 @@ public class CartServiceImpl implements CartService {
 		Cart cart = new Cart();
 		cart.setPrice(cartDTO.getPrice());
 		cart.setQuantity(cartDTO.getQuantity());
-		cart.setId(cartDTO.getCartId());
+		cart.setCartId(cartDTO.getCartId());
 		// cart.setFoodId(cartDTO.getFoodId());
 
 		cartRepository.save(cart);
@@ -67,7 +67,7 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public boolean deleteCart(CartDTO cartDTO) {
 		Cart cart = new Cart();
-		cart.setId(cartDTO.getCartId());
+		cart.setCartId(cartDTO.getCartId());
 		cartRepository.delete(cart);
 		return true;
 	}

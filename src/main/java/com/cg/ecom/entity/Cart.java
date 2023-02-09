@@ -22,7 +22,7 @@ public class Cart {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int cartId; //id
 	private int quantity;
 	private double price;
 	private int productId;

@@ -34,7 +34,7 @@ class ECOMApplicationTests {
 	@Test
 	void testgetByCustomerId() {
 		CustomersDTO d = customersService.getById(5);
-		assertEquals("abc", d.getName());
+		assertEquals("abc", d.getCustomerName());
 	}
 
 	@Test

@@ -21,16 +21,16 @@ import lombok.NoArgsConstructor;
 public class Customers {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "customerId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
-	private String name;
+	private String customerName;
 	private String address;
 	private Long mobilenumber;
 	private String emailId;
 
 	@OneToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "userId")
 	private User userId;
 
 //	public String getName() {

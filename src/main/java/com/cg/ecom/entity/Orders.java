@@ -24,7 +24,7 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orderId;
-	private LocalDate date;
+//	private LocalDate date;
 	private String status;
 	private String deliveryAddress;
 	private int cartId;

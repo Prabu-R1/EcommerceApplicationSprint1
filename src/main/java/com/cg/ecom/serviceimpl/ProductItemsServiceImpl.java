@@ -26,14 +26,14 @@ public class ProductItemsServiceImpl implements ProductItemsService {
 
 		ProductItems productitems = new ProductItems();
 		ProductSupplier rest=new ProductSupplier();
-		rest.setId(productItemsDTO.getProductSupplierId());
+		rest.setProductSupplierId(productItemsDTO.getProductSupplierId());
 		productitems.setProductSuppliers(rest);
-		productitems.setName(productItemsDTO.getName());
+		productitems.setProductName(productItemsDTO.getProductName());
 		productitems.setPrice(productItemsDTO.getPrice());
 		productitems.setQuantity(productItemsDTO.getQuantity());	
 		
 		ProductItems productitemssave=productItemsRepository.save(productitems);
-		productItemsDTO.setProductId(productitemssave.getId());
+		productItemsDTO.setProductId(productitemssave.getProductId());
 		return productItemsDTO;
 	}
 
@@ -42,12 +42,12 @@ public class ProductItemsServiceImpl implements ProductItemsService {
 
 		ProductItems productitems = new ProductItems();
 		ProductSupplier rest=new ProductSupplier();
-		rest.setId(productItemsDTO.getProductSupplierId());
+		rest.setProductSupplierId(productItemsDTO.getProductSupplierId());
 		productitems.setProductSuppliers(rest);
-		productitems.setName(productItemsDTO.getName());
+		productitems.setProductName(productItemsDTO.getProductName());
 		productitems.setPrice(productItemsDTO.getPrice());
 		productitems.setQuantity(productItemsDTO.getQuantity());	
-		productitems.setId(productItemsDTO.getProductId());
+		productitems.setProductId(productItemsDTO.getProductId());
 		
 		productItemsRepository.save(productitems);		
 		return productItemsDTO;
@@ -57,7 +57,7 @@ public class ProductItemsServiceImpl implements ProductItemsService {
 	public boolean deleteProductItems(ProductItemsDTO productItemsDTO) {
 
 		ProductItems productitems = new ProductItems();
-		productitems.setId(productItemsDTO.getProductId());
+		productitems.setProductId(productItemsDTO.getProductId());
 		productItemsRepository.delete(productitems);
 		return true;
 	}

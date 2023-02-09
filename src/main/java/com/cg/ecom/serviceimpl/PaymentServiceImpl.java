@@ -30,7 +30,7 @@ public class PaymentServiceImpl implements PaymentService {
 
 		Payment payment = new Payment();
 		Cart cart = new Cart();
-		cart.setId(paymentDTO.getPaymentId());
+		cart.setCartId(paymentDTO.getPaymentId());
 		payment.setCartId(cart);
 		payment.setPaymentId(paymentDTO.getPaymentId());
 		payment.setPaymentDate(paymentDTO.getPaymentDate());
@@ -40,7 +40,7 @@ public class PaymentServiceImpl implements PaymentService {
 		Cart cartSave = cartRepository.save(cart);
 		Payment paymentsave = paymentRepository.save(payment);
 		paymentDTO.setPaymentId(paymentsave.getPaymentId());
-		paymentDTO.setCartId(cartSave.getId());
+		paymentDTO.setCartId(cartSave.getCartId());
 		return paymentDTO;
 
 	}
