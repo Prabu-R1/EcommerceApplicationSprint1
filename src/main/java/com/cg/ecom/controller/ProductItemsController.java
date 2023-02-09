@@ -26,27 +26,27 @@ public class ProductItemsController {
 	public ProductItemsService productItemsService;
 	
 	@PostMapping("/addproductitems")
-	public ResponseEntity<ProductItemsDTO> addFoodItems(@RequestBody ProductItemsDTO productItemsDTO){
+	public ResponseEntity<ProductItemsDTO> addProductItems(@RequestBody ProductItemsDTO productItemsDTO){
 		
-			ProductItemsDTO fooditems = productItemsService.addProductItems(productItemsDTO);
-			return ResponseEntity.ok(fooditems);
+			ProductItemsDTO productitems = productItemsService.addProductItems(productItemsDTO);
+			return ResponseEntity.ok(productitems);
 		
 	}
 
 	@GetMapping("/productItemsById/{id}")
-	public ResponseEntity<ProductItemsDTO> getfoodItemById(@PathVariable int id){
+	public ResponseEntity<ProductItemsDTO> getProductItemsById(@PathVariable int id){
 		ProductItemsDTO productItemsDTO=productItemsService.getById(id);
 		return new ResponseEntity<ProductItemsDTO>(productItemsDTO, HttpStatus.FOUND);
 	}
 	
 	@PutMapping("/updateProductItems")
-	public ResponseEntity<ProductItemsDTO> updateFoodItems(@RequestBody ProductItemsDTO productItemsDTO){
+	public ResponseEntity<ProductItemsDTO> updateProductItems(@RequestBody ProductItemsDTO productItemsDTO){
 		return new ResponseEntity<ProductItemsDTO>(productItemsService.updateProductItems(productItemsDTO), HttpStatus.ACCEPTED);
 		
 	}
 	
 	@DeleteMapping("/deleteProductItems/{id}")
-	public ResponseEntity<Boolean> deleteFoodItemsById(@PathVariable int id){
+	public ResponseEntity<Boolean> deleteProductItemsById(@PathVariable int id){
 		ProductItemsDTO productItemsDTO=productItemsService.getById(id);
 		if(productItemsDTO!=null) {
 			productItemsService.deleteProductItems(productItemsDTO);
@@ -56,7 +56,7 @@ public class ProductItemsController {
 	}
 	
 	@GetMapping("/fetchAllproductItems")
-	public ResponseEntity<List<ProductItemsDTO>> getAllFoodItems(){
+	public ResponseEntity<List<ProductItemsDTO>> getAllProductItems(){
 		List<ProductItemsDTO> list=productItemsService.findAll();
 		return ResponseEntity.ok(list);
 	}

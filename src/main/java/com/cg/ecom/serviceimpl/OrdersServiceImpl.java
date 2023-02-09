@@ -46,7 +46,7 @@ public class OrdersServiceImpl implements OrdersService {
 		return ordersDTO;
 
 //		Customers customer = customersRepository.findById(ordersDTO.getCustomerId()).get();
-//		ProductSupplier restaurant = restaurantsRepository.findById(ordersDTO.getProductSupplierId()).get();
+
 
 	}
 

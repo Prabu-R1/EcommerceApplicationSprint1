@@ -31,52 +31,6 @@ public class ProductSupplier {
 	@JoinColumn(name = "userId")
 	private User userId;
 
-//	public int getId() {
-//		return id;
-//	}
-//
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-//
-//	public String getName() {
-//		return name;
-//	}
-//
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//
-//	public String getLocation() {
-//		return location;
-//	}
-//
-//	public void setLocation(String location) {
-//		this.location = location;
-//	}
-//
-//	public Long getContactNo() {
-//		return contactNo;
-//	}
-//
-//	public void setContactNo(Long contactNo) {
-//		this.contactNo = contactNo;
-//	}
-//
-//	public String getEmailId() {
-//		return emailId;
-//	}
-//
-//	public void setEmailId(String emailId) {
-//		this.emailId = emailId;
-//	}
-//
-//	public User getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(User userId) {
-//		this.userId = userId;
-//	}
+
 
 }

@@ -30,12 +30,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		return new ResponseEntity<Object>(objectBody, status);
 	}
 	
-//	@ExceptionHandler(ItemNotAvailableException.class)
-//	public ResponseEntity<ExceptionResponse> handler(ItemNotAvailableException ex){
-//		ExceptionResponse exception=new ExceptionResponse(ex.getMessage(),LocalDateTime.now(),HttpStatus.BAD_REQUEST.value());
-//		ResponseEntity<ExceptionResponse> response=new ResponseEntity<ExceptionResponse>(exception,HttpStatus.BAD_REQUEST);
-//		return response;
-//	}
+
 	
 	
 	@ExceptionHandler(ProductSupplierNotAvailableException.class)

@@ -79,9 +79,9 @@ public class ProductItemsServiceImpl implements ProductItemsService {
 
 		Iterable<ProductItems> productitems = productItemsRepository.findAll();
 		List<ProductItemsDTO> dtos = new ArrayList<>();
-		for (ProductItems fooditem : productitems) {
+		for (ProductItems productitem : productitems) {
 			ProductItemsDTO dto = new ProductItemsDTO();
-			BeanUtils.copyProperties(fooditem, dto);
+			BeanUtils.copyProperties(productitem, dto);
 			dtos.add(dto);
 		}
 		return dtos;

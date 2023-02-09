@@ -39,63 +39,6 @@ public class Orders {
 
 
 
-//	public LocalDate getDate() {
-//		return date;
-//	}
-//
-//	public void setDate(LocalDate date) {
-//		this.date = date;
-//	}
-//
-//	public String getStatus() {
-//		return status;
-//	}
-//
-//	public void setStatus(String status) {
-//		this.status = status;
-//	}
-//
-//	public int getOrderId() {
-//		return orderId;
-//	}
-//
-//	public void setOrderId(int orderId) {
-//		this.orderId = orderId;
-//	}
-//
-//	public Customers getCustomers() {
-//		return customers;
-//	}
-//
-//	public void setCustomers(Customers customers) {
-//		this.customers = customers;
-//	}
-//
-//	public Restaurants getRestaurants() {
-//		return restaurants;
-//	}
-//
-//	public void setRestaurants(Restaurants restaurants) {
-//		this.restaurants = restaurants;
-//	}
-//
-//	public String getDeliveryAddress() {
-//		return deliveryAddress;
-//	}
-//
-//	public void setDeliveryAddress(String deliveryAddress) {
-//		this.deliveryAddress = deliveryAddress;
-//	}
-//
-//	public int getCartId() {
-//		return cartId;
-//	}
-//
-//	public void setCartId(int cartId) {
-//		this.cartId = cartId;
-//	}
-
-
 
 	
 }

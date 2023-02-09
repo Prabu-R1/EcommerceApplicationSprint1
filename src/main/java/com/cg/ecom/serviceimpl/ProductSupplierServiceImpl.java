@@ -82,7 +82,7 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 			BeanUtils.copyProperties(productSupplier.get(), dto);
 			return dto;
 		}
-		throw new ProductSupplierNotAvailableException("Restaurant not Available");
+		throw new ProductSupplierNotAvailableException("ProductSupplierNotAvailable not Available");
 	}
 
 	@Override
@@ -90,9 +90,9 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 
 		Iterable<ProductSupplier> productSupplier = productSupplierRepository.findAll();
 		List<ProductSupplierDTO> dtos = new ArrayList<>();
-		for (ProductSupplier restaurant : productSupplier) {
+		for (ProductSupplier productSupplier1 : productSupplier) {
 			ProductSupplierDTO dto = new ProductSupplierDTO();
-			BeanUtils.copyProperties(restaurant, dto);
+			BeanUtils.copyProperties(productSupplier1, dto);
 			dtos.add(dto);
 		}
 		return dtos;

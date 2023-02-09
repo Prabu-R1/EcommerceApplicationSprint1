@@ -43,7 +43,7 @@ public class CartServiceImpl implements CartService {
 //			cart.setPrice(cartDTO.getPrice());
 //			cart.setQuantity(cartDTO.getQuantity());
 //			cart.setId(cartDTO.getCartId());
-//			//cart.setFoodId(cartDTO.getFoodId());
+
 //
 //			cartRepository.save(cart);
 //			cart.setId(0);
@@ -58,7 +58,7 @@ public class CartServiceImpl implements CartService {
 		cart.setPrice(cartDTO.getPrice());
 		cart.setQuantity(cartDTO.getQuantity());
 		cart.setCartId(cartDTO.getCartId());
-		// cart.setFoodId(cartDTO.getFoodId());
+
 
 		cartRepository.save(cart);
 		return cartDTO;

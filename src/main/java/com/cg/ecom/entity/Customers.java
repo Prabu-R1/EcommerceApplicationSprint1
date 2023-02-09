@@ -33,60 +33,6 @@ public class Customers {
 	@JoinColumn(name = "userId")
 	private User userId;
 
-//	public String getName() {
-//		return name;
-//	}
-//
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//
-//	public String getAddress() {
-//		return address;
-//	}
-//
-//	public void setAddress(String address) {
-//		this.address = address;
-//	}
-//
-//	public Long getMobilenumber() {
-//		return mobilenumber;
-//	}
-//
-//	public void setMobilenumber(Long mobilenumber) {
-//		this.mobilenumber = mobilenumber;
-//	}
-//
-//	public String getEmailId() {
-//		return emailId;
-//	}
-//
-//	public void setEmailId(String emailId) {
-//		this.emailId = emailId;
-//	}
-//
-//	public User getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(User userId) {
-//		this.userId = userId;
-//	}
-//
-//	public int getCustomerId() {
-//		return customerId;
-//	}
-//
-//	public void setCustomerId(int customerId) {
-//		this.customerId = customerId;
-//	}
-//
-////	public List<Payment> getPayment() {
-////		return payment;
-////	}
-////
-////	public void setPayment(List<Payment> payment) {
-////		this.payment = payment;
-////	}
+
 
 }

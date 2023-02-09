@@ -35,53 +35,7 @@ public class Cart {
 	@JoinColumn(name = "id")
 	private ProductItems ProductItems;
 
-//	public double getPrice() {
-//		return price;
-//	}
-//
-//	public void setPrice(double price) {
-//		this.price = price;
-//	}
-//
-//	public int getId() {
-//		return id;
-//	}
-//
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-//
-//	public int getQuantity() {
-//		return quantity;
-//	}
-//
-//	public void setQuantity(int quantity) {
-//		this.quantity = quantity;
-//	}
-//
-//	public Customers getCustomers() {
-//		return customers;
-//	}
-//
-//	public void setCustomers(Customers customers) {
-//		this.customers = customers;
-//	}
-//
-//	public int getFoodId() {
-//		return foodId;
-//	}
-//
-//	public void setFoodId(int foodId) {
-//		this.foodId = foodId;
-//	}
-//
-//	public FoodItems getFoodItems() {
-//		return FoodItems;
-//	}
-//
-//	public void setFoodItems(FoodItems foodItems) {
-//		FoodItems = foodItems;
-//	}
+
 
 
 }
