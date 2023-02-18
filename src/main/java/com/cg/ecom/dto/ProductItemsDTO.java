@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 public class ProductItemsDTO {
 
 	private int productId;
-	private int productSupplierId;
 	private String ProductName;
 	private int price;
 	private int quantity;
+	///////////
+	private int productSupplierId;
 
 
 

@@ -14,10 +14,10 @@ public class ProductSupplierDTO {
 	private String location;
 	private Long contactNo;
 	
-//	private String emailId;
+	private String emailId;
 //	private String username;
 //	private String password;
-	private int userId;
+//	private int userId;
 
 
 }

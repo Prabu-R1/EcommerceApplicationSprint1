@@ -31,13 +31,13 @@ public class CustomersControllerTest {
     public void setUp() {
         customersDTO = new CustomersDTO();
         customersDTO.setCustomerId(1);
-        customersDTO.setUsername("John Doe");
+//        customersDTO.setUsername("John Doe");
         customersDTO.setAddress("123 Main St");
         customersDTO.setMobilenumber(1234567890L);
         customersDTO.setEmailId("johndoe@email.com");
        // customersDTO.setPassword("password");
       //  customersDTO.setUsername("johndoe");
-        customersDTO.setUserId(1);
+//        customersDTO.setUserId(1);
     }
 
     @Test

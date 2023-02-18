@@ -28,6 +28,7 @@ public class PaymentController {
 	public ResponseEntity<PaymentDTO> addPayment(@RequestBody PaymentDTO paymentDTO) {
 
 		PaymentDTO addpayment = paymentService.addPayment(paymentDTO);
+		
 		return ResponseEntity.ok(addpayment);
 
 	}

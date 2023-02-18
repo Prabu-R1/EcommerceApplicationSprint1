@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.cg.ecom.dto.CartDTO;
 import com.cg.ecom.entity.Cart;
 import com.cg.ecom.entity.Customers;
+import com.cg.ecom.entity.ProductItems;
 import com.cg.ecom.repository.CartRepository;
 import com.cg.ecom.service.CartService;
 
@@ -25,13 +26,28 @@ public class CartServiceImpl implements CartService {
 
 		Cart cart = new Cart();
 		Customers cust = new Customers();
+		
+		ProductItems product = new ProductItems();
+		product.setProductId(cartDTO.getProductId());
+//		List<ProductItems> products = new ArrayList<>();
+//		products.add(product);
+
+		
+//		List<ProductItems> Produt = (List<ProductItems>) new ProductItems();
+//		Produt.setProductId(cartDTO.getProductId());
+		
 		cust.setCustomerId(cartDTO.getCustomerId());
 		cart.setCustomers(cust);
-		cart.setProductId(cartDTO.getProductId());
-		cart.setPrice(cartDTO.getPrice());
+		
+		cart.setProductItems(product);
+		cart.setCartId(cartDTO.getCartId());
+		
+//		cart.setProductId(cartDTO.getProductId());
+//		cart.setPrice(cartDTO.getPrice());
 		cart.setQuantity(cartDTO.getQuantity());
 
 		Cart cartsave = cartRepository.save(cart);
+		
 		cartDTO.setCartId(cartsave.getCartId());
 		return cartDTO;
 
@@ -55,7 +71,7 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public CartDTO updateCart(CartDTO cartDTO) {
 		Cart cart = new Cart();
-		cart.setPrice(cartDTO.getPrice());
+//		cart.setPrice(cartDTO.getPrice());
 		cart.setQuantity(cartDTO.getQuantity());
 		cart.setCartId(cartDTO.getCartId());
 

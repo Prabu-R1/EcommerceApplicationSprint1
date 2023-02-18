@@ -39,6 +39,16 @@ public class CartController {
 
 	}
 
+	@GetMapping("/getCartById/{id}")
+	public ResponseEntity<CartDTO> getCartById(@PathVariable int id) {
+		CartDTO cartDTO = cartService.getById(id);
+		if (cartDTO != null) {
+			return new ResponseEntity<CartDTO>(cartDTO, HttpStatus.OK);
+		}
+		throw new ItemNotAvailableException("Cart with id " + id + " doesn't exist");
+	}
+
+	
 	@DeleteMapping("/deleteCartById/{id}")
 	public ResponseEntity<Boolean> deleteCartById(@PathVariable int id) {
 		CartDTO cartDTO = cartService.getById(id);

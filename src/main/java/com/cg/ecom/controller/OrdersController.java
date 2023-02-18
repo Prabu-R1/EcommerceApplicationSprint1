@@ -37,8 +37,13 @@ public class OrdersController {
 	@GetMapping("/fetchOrderById/{id}")
 	public ResponseEntity<OrdersDTO> getOrderById(@PathVariable int id){
 		OrdersDTO ordersDTO=ordersService.getById(id);
+		
+		if(ordersDTO!=null) 
+		{
 		return new ResponseEntity<OrdersDTO>(ordersDTO, HttpStatus.FOUND);
-	}
+	    }
+		throw new ItemNotAvailableException();
+		}
 	
 	@PutMapping("/updateOrders")
 	public ResponseEntity<OrdersDTO> updateOrders(@RequestBody OrdersDTO ordersDTO){

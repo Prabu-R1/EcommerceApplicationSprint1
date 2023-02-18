@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class ProductSupplier {
 	 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productSupplierId;
 	
 	private String productSupplierName;
@@ -27,9 +27,9 @@ public class ProductSupplier {
 	private Long contactNo;
 	private String emailId;
 
-	@OneToOne
-	@JoinColumn(name = "userId")
-	private User userId;
+//	@OneToOne
+//	@JoinColumn(name = "userId")
+//	private User userId;
 
 
 

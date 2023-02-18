@@ -34,9 +34,13 @@ public class ProductItemsController {
 	}
 
 	@GetMapping("/productItemsById/{id}")
-	public ResponseEntity<ProductItemsDTO> getProductItemsById(@PathVariable int id){
+	public ResponseEntity<ProductItemsDTO> getProductItemsById(@PathVariable int id)
+	{
+		if(productItemsService.getById(id)!=null) {
 		ProductItemsDTO productItemsDTO=productItemsService.getById(id);
 		return new ResponseEntity<ProductItemsDTO>(productItemsDTO, HttpStatus.FOUND);
+		}
+		throw new ItemNotAvailableException();
 	}
 	
 	@PutMapping("/updateProductItems")
@@ -46,7 +50,8 @@ public class ProductItemsController {
 	}
 	
 	@DeleteMapping("/deleteProductItems/{id}")
-	public ResponseEntity<Boolean> deleteProductItemsById(@PathVariable int id){
+	public ResponseEntity<Boolean> deleteProductItemsById(@PathVariable int id)
+	{
 		ProductItemsDTO productItemsDTO=productItemsService.getById(id);
 		if(productItemsDTO!=null) {
 			productItemsService.deleteProductItems(productItemsDTO);

@@ -1,5 +1,6 @@
 package com.cg.ecom.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,16 +23,17 @@ public class Customers {
 
 	@Id
 	@Column(name = "customerId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
 	private String customerName;
 	private String address;
 	private Long mobilenumber;
 	private String emailId;
 
-	@OneToOne
-	@JoinColumn(name = "userId")
-	private User userId;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private Cart cartId;
+////	@JoinColumn(name = "userId")
+	
 
 
 

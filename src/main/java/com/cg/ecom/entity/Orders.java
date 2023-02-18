@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Orders {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orderId;
 //	private LocalDate date;
 	private String status;
@@ -30,12 +31,19 @@ public class Orders {
 	private int cartId;
 
 	@ManyToOne
-	@JoinColumn(name = "customer_id")
-	private Customers customers;
+	@JoinColumn(name = "customer_order_fk")
+	private Customers customerId;
 
 	@ManyToOne
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "productsup_fk")
 	private ProductSupplier productSuppliers;
+	
+	@OneToOne
+	@JoinColumn(name = "Order_cart_fk")
+	private  Cart cart;
+	
+	@OneToOne(mappedBy = "orderId")
+	private Payment payment;
 
 
 

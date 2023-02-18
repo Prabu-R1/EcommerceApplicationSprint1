@@ -1,12 +1,20 @@
 package com.cg.ecom.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,21 +29,23 @@ import lombok.NoArgsConstructor;
 public class Cart {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int cartId; //id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int cartId;
 	private int quantity;
-	private double price;
-	private int productId;
 
 	@OneToOne
-	@JoinColumn(name = "customer_id")
+	@JoinColumn(name = "customer_cart_fk")
 	private Customers customers;
-
+	
+//	@Transient	
+//	private List<ProductItems> productItems;
+	
+//	@OneToMany
+//	@JoinColumn(name = "cart_product_fk")
+//	private List<ProductItems> productItems;
+	
 	@OneToOne
-	@JoinColumn(name = "id")
-	private ProductItems ProductItems;
-
-
-
+	@JoinColumn(name = "cart_product_fk")
+	private ProductItems productItems;
 
 }

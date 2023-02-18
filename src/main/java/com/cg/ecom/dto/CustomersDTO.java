@@ -11,9 +11,9 @@ public class CustomersDTO {
 	private Long mobilenumber;
 	private String emailId;
 	//////////////
-	private String password;
-	private String username;
-	private int userId;
+//	private String password;
+//	private String username;
+//	private int userId;
 
 	
 }

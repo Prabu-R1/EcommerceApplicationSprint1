@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.ecom.dto.OrdersDTO;
+import com.cg.ecom.entity.Cart;
 import com.cg.ecom.entity.Customers;
 import com.cg.ecom.entity.Orders;
 import com.cg.ecom.entity.ProductSupplier;
@@ -26,8 +27,12 @@ public class OrdersServiceImpl implements OrdersService {
 
 		Orders orders = new Orders();
 		Customers cust = new Customers();
+		Cart cart = new Cart();
+		cart.setCartId(ordersDTO.getCartId());
+		orders.setCart(cart);
+		
 		cust.setCustomerId(ordersDTO.getCustomerId());
-		orders.setCustomers(cust);
+		orders.setCustomerId(cust);
 //		orders.setDate(ordersDTO.getDate());
 		orders.setDeliveryAddress(ordersDTO.getDeliveryAddress());
 		orders.setStatus(ordersDTO.getStatus());
@@ -59,7 +64,7 @@ public class OrdersServiceImpl implements OrdersService {
 		rest.setProductSupplierId(ordersDTO.getProductSupplierId());
 		cust.setCustomerId(ordersDTO.getCustomerId());
 		orders.setProductSuppliers(rest);
-		orders.setCustomers(cust);
+		orders.setCustomerId(cust);
 		//orders.setDate(ordersDTO.getDate());
 		orders.setDeliveryAddress(ordersDTO.getDeliveryAddress());
 		orders.setStatus(ordersDTO.getStatus());

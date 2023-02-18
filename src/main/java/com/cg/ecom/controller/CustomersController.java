@@ -33,14 +33,11 @@ public class CustomersController {
 
 	}
 
-	@GetMapping("/fetchCustomersById/{id}")
-	public ResponseEntity<CustomersDTO> getCustomersById(@PathVariable int id) {
-		CustomersDTO customersDTO = customersService.getById(id);
-		return new ResponseEntity<CustomersDTO>(customersDTO, HttpStatus.FOUND);
-	}
+	
 
 	@PutMapping("/updateCustomers")
-	public ResponseEntity<CustomersDTO> updateCustomers(@RequestBody CustomersDTO customersDTO) {
+	public ResponseEntity<CustomersDTO> updateCustomers(@RequestBody CustomersDTO customersDTO) 
+	{
 		return new ResponseEntity<CustomersDTO>(customersService.updateCustomers(customersDTO), HttpStatus.ACCEPTED);
 
 	}
@@ -54,10 +51,8 @@ public class CustomersController {
 		}
 		throw new ItemNotAvailableException("Customers with id " + id + "doesnot exists");
 	}
-
-	@GetMapping("/fetchAllCustomers")
-	public ResponseEntity<List<CustomersDTO>> getAllCustomers() {
-		List<CustomersDTO> list = customersService.findAll();
-		return ResponseEntity.ok(list);
-	}
+///////////////
+	
+	
+	
 }

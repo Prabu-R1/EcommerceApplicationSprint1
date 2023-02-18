@@ -26,6 +26,7 @@ public class ProductItemsServiceImpl implements ProductItemsService {
 
 		ProductItems productitems = new ProductItems();
 		ProductSupplier rest=new ProductSupplier();
+		
 		rest.setProductSupplierId(productItemsDTO.getProductSupplierId());
 		productitems.setProductSuppliers(rest);
 		productitems.setProductName(productItemsDTO.getProductName());

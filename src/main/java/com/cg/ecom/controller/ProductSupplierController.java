@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.ecom.dto.CustomersDTO;
 import com.cg.ecom.dto.ProductSupplierDTO;
+import com.cg.ecom.entity.Customers;
+import com.cg.ecom.exceptions.CustomerNotFoundException;
 import com.cg.ecom.exceptions.ProductSupplierNotAvailableException;
+import com.cg.ecom.service.CustomersService;
 import com.cg.ecom.service.ProductSupplierService;
 
 @RestController
@@ -25,6 +29,31 @@ public class ProductSupplierController {
 	@Autowired
 	public ProductSupplierService productSupplierService;
 
+	@Autowired
+	public CustomersService customersService;
+	
+
+/////////////
+@GetMapping("/fetchCustomersById/{id}")
+public ResponseEntity<CustomersDTO> getCustomersById(@PathVariable int id) 
+{
+	
+CustomersDTO customersDTO = customersService.getById(id);
+if(customersDTO != null) 
+{
+
+return new ResponseEntity<CustomersDTO>(customersDTO, HttpStatus.FOUND);
+}
+throw new CustomerNotFoundException();
+}
+
+@GetMapping("/fetchAllCustomers")
+public ResponseEntity<List<CustomersDTO>> getAllCustomers() {
+List<CustomersDTO> list = customersService.findAll();
+return ResponseEntity.ok(list);
+}
+//////////////
+	
 	@PostMapping("/addProductSuppliers")
 	public ResponseEntity<ProductSupplierDTO> addProductSupplier(@RequestBody ProductSupplierDTO productSupplierDTO) {
 
@@ -32,6 +61,7 @@ public class ProductSupplierController {
 		return ResponseEntity.ok(productSuppliers);
 
 	}
+	
 
 	@GetMapping("/fetchProductSuppliersById/{id}")
 	public ResponseEntity<ProductSupplierDTO> getProductSupplierById(@PathVariable int id) {

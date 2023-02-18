@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.cg.ecom.dto.ProductSupplierDTO;
 import com.cg.ecom.entity.ProductSupplier;
-import com.cg.ecom.entity.User;
 import com.cg.ecom.exceptions.ProductSupplierNotAvailableException;
 import com.cg.ecom.repository.ProductSupplierRepository;
-import com.cg.ecom.repository.UserRepository;
 import com.cg.ecom.service.ProductSupplierService;
 
 @Service
@@ -21,22 +19,22 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 	@Autowired
 	private ProductSupplierRepository productSupplierRepository;
 
-	@Autowired
-	private UserRepository userRepository;
+//	@Autowired
+//	private UserRepository userRepository;
 	
 	@Override
 	public ProductSupplierDTO addProductSupplier(ProductSupplierDTO productSupplierDto) {
 
-		User user=new User();
+//		User user=new User();
 //		user.setPassword(productSupplierDto.getPassword());
-		user.setRole("OWNER");
+//		user.setRole("OWNER");
 //		user.setUsername(productSupplierDto.getUsername());		
 
-		User userSave=userRepository.save(user);
+//		User userSave=userRepository.save(user);
 		ProductSupplier productSupplier = new ProductSupplier();
-		productSupplier.setUserId(userSave);
+//		productSupplier.setUserId(userSave);
 		productSupplier.setProductSupplierName(productSupplierDto.getProductSupplierName());
-//		productSupplier.setEmailId(productSupplierDto.getEmailId());
+		productSupplier.setEmailId(productSupplierDto.getEmailId());
 		productSupplier.setContactNo(productSupplierDto.getContactNo());
         //productSupplier.setId(productSupplierDto.productSupplierId());
         productSupplier.setLocation(productSupplierDto.getLocation());
@@ -51,12 +49,12 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 	public ProductSupplierDTO updateProductSupplier(ProductSupplierDTO productSupplierDTO) {
 
 		ProductSupplier productSupplier = new ProductSupplier();
-		User user=new User();
+//		User user=new User();
 //		user.setUserId(productSupplierDTO.getUserId());
-		productSupplier.setUserId(user);
+//		productSupplier.setUserId(user);
 		productSupplier.setProductSupplierId(productSupplierDTO.getProductSupplierId());
 		productSupplier.setProductSupplierName(productSupplierDTO.getProductSupplierName());
-//		productSupplier.setEmailId(productSupplierDTO.getEmailId());
+		productSupplier.setEmailId(productSupplierDTO.getEmailId());
 		productSupplier.setContactNo(productSupplierDTO.getContactNo());
 		productSupplier.setLocation(productSupplierDTO.getLocation());
 		

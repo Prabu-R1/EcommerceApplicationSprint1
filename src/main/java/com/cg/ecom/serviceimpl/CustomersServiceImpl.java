@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.ecom.dto.CustomersDTO;
 import com.cg.ecom.entity.Customers;
-import com.cg.ecom.entity.User;
 import com.cg.ecom.repository.CustomersRepository;
-import com.cg.ecom.repository.UserRepository;
 import com.cg.ecom.service.CustomersService;
 
 @Service
@@ -19,23 +17,32 @@ public class CustomersServiceImpl implements CustomersService {
 	@Autowired
 	private CustomersRepository customerRepository;
 	
-	@Autowired
-	private UserRepository userRepository;
- 
+//	@Autowired
+//	private UserRepository userRepository;
+
+	 public void  CustomersDTO() {
+	        for (int i = 100; i <= 200; i++) {
+	        	Customers entity = new Customers();
+	            int counter = 0;
+				entity.setCustomerId(counter++);
+	            // set other fields if necessary
+				customerRepository.save(entity);
+	        }
+	    }
 
 	@Override
 	public CustomersDTO addCustomers(CustomersDTO customersDto) {
 		
 
 		//logic for user_details
-		User user=new User();
-		user.setPassword(customersDto.getPassword());
-		user.setRole("CUSTOMER");
-		user.setUsername(customersDto.getUsername());
+//		User user=new User();
+//		user.setPassword(customersDto.getPassword());
+//		user.setRole("CUSTOMER");
+//		user.setUsername(customersDto.getUsername());
 
-		User userSave=userRepository.save(user);
+//		User userSave=userRepository.save(user);
 		Customers customers = new Customers();
-		customers.setUserId(userSave);
+//		customers.setUserId(userSave);
 		customers.setAddress(customersDto.getAddress());
 		customers.setEmailId(customersDto.getEmailId());
 		customers.setMobilenumber(customersDto.getMobilenumber());
@@ -44,7 +51,7 @@ public class CustomersServiceImpl implements CustomersService {
 		
 		Customers customersave =customerRepository.save(customers);
 		customersDto.setCustomerId(customersave.getCustomerId());
-		customersDto.setUserId(userSave.getUserId());
+//		customersDto.setUserId(userSave.getUserId());
 		return customersDto;
 	}
 
@@ -52,9 +59,9 @@ public class CustomersServiceImpl implements CustomersService {
 	public CustomersDTO updateCustomers(CustomersDTO customersDTO) {
 		
 		Customers customers = new Customers();
-		User user=new User();
-		user.setUserId(customersDTO.getUserId());
-		customers.setUserId(user);
+//		User user=new User();
+//		user.setUserId(customersDTO.getUserId());
+//		customers.setUserId(user);
 		customers.setCustomerId(customersDTO.getCustomerId());
 		customers.setAddress(customersDTO.getAddress());
 		customers.setEmailId(customersDTO.getEmailId());
