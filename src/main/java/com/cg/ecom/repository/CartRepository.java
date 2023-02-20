@@ -8,8 +8,10 @@ import com.cg.ecom.entity.Cart;
 import com.cg.ecom.entity.Customers;
 
 @Repository
-public interface CartRepository extends CrudRepository<Cart, Integer>
+public interface CartRepository extends JpaRepository<Cart, Integer>
 {
-	Iterable<Cart> findAll();
+//	Iterable<Cart> findAll();
 	
 }
+
+//CrudRepository<Cart, Integer>

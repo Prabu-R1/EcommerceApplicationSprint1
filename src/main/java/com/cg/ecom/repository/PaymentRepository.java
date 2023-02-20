@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.jboss.logging.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -12,9 +13,12 @@ import org.springframework.stereotype.Repository;
 import com.cg.ecom.entity.Payment;
 
 @Repository
-public interface PaymentRepository extends CrudRepository<Payment, Integer>{
+public interface PaymentRepository extends JpaRepository<Payment, Integer>
+{
 
-	Iterable<Payment> findAll();
+//	Iterable<Payment> findAll();
 	
 	
 }
+
+//CrudRepository<Payment, Integer>
