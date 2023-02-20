@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.ecom.dto.ProductItemsDTO;
+import com.cg.ecom.entity.Customers;
 import com.cg.ecom.entity.ProductItems;
 import com.cg.ecom.entity.ProductSupplier;
 import com.cg.ecom.repository.ProductItemsRepository;
@@ -19,7 +20,6 @@ public class ProductItemsServiceImpl implements ProductItemsService {
 	@Autowired
 	private ProductItemsRepository productItemsRepository;
 
-	
 	
 	@Override
 	public ProductItemsDTO addProductItems(ProductItemsDTO productItemsDTO) {

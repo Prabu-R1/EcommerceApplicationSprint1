@@ -26,9 +26,9 @@ public class Orders {
 //	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orderId;
 //	private LocalDate date;
-	private String status;
+//	private String status;
 	private String deliveryAddress;
-	private int cartId;
+//	private int cartId;
 
 	@ManyToOne
 	@JoinColumn(name = "customer_order_fk")

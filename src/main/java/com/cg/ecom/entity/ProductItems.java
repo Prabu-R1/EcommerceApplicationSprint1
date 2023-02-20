@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 public class ProductItems {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int productId;	
 	private String ProductName;
 	private int price;

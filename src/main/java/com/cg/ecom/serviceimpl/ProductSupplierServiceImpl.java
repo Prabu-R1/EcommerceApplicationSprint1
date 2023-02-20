@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.ecom.dto.ProductSupplierDTO;
+import com.cg.ecom.entity.Customers;
 import com.cg.ecom.entity.ProductSupplier;
 import com.cg.ecom.exceptions.ProductSupplierNotAvailableException;
 import com.cg.ecom.repository.ProductSupplierRepository;
@@ -19,8 +20,16 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 	@Autowired
 	private ProductSupplierRepository productSupplierRepository;
 
-//	@Autowired
-//	private UserRepository userRepository;
+//	 public void  ProductSupplierDTO() {
+//	        for (int i = 100; i <= 200; i++) {
+//	        	ProductSupplier entity = new ProductSupplier();
+//	            int counter = 0;
+//				entity.setProductSupplierId(i);
+//	            // set other fields if necessary
+//				productSupplierRepository.save(entity);
+//	        }
+//	    }
+	
 	
 	@Override
 	public ProductSupplierDTO addProductSupplier(ProductSupplierDTO productSupplierDto) {

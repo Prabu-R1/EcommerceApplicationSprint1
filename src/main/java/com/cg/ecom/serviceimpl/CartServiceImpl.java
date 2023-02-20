@@ -29,12 +29,7 @@ public class CartServiceImpl implements CartService {
 		
 		ProductItems product = new ProductItems();
 		product.setProductId(cartDTO.getProductId());
-//		List<ProductItems> products = new ArrayList<>();
-//		products.add(product);
 
-		
-//		List<ProductItems> Produt = (List<ProductItems>) new ProductItems();
-//		Produt.setProductId(cartDTO.getProductId());
 		
 		cust.setCustomerId(cartDTO.getCustomerId());
 		cart.setCustomers(cust);
@@ -42,8 +37,7 @@ public class CartServiceImpl implements CartService {
 		cart.setProductItems(product);
 		cart.setCartId(cartDTO.getCartId());
 		
-//		cart.setProductId(cartDTO.getProductId());
-//		cart.setPrice(cartDTO.getPrice());
+
 		cart.setQuantity(cartDTO.getQuantity());
 
 		Cart cartsave = cartRepository.save(cart);
@@ -51,21 +45,7 @@ public class CartServiceImpl implements CartService {
 		cartDTO.setCartId(cartsave.getCartId());
 		return cartDTO;
 
-//		Customers customer = customersRepository.findById(cartDTO.getCustomerId()).get();
-//
-//		if (customer != null) {
-//			Cart cart = new Cart();
-//			cart.setCustomers(customer);
-//			cart.setPrice(cartDTO.getPrice());
-//			cart.setQuantity(cartDTO.getQuantity());
-//			cart.setId(cartDTO.getCartId());
 
-//
-//			cartRepository.save(cart);
-//			cart.setId(0);
-//		}
-//
-//		return cartDTO;
 	}
 
 	@Override

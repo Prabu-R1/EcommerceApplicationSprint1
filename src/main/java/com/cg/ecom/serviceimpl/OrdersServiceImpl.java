@@ -6,26 +6,51 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.jaxb.SpringDataJaxb.OrderDto;
 import org.springframework.stereotype.Service;
 
 import com.cg.ecom.dto.OrdersDTO;
 import com.cg.ecom.entity.Cart;
 import com.cg.ecom.entity.Customers;
 import com.cg.ecom.entity.Orders;
+import com.cg.ecom.entity.ProductItems;
 import com.cg.ecom.entity.ProductSupplier;
+import com.cg.ecom.exceptions.CartIdAlreadyExistsException;
 import com.cg.ecom.exceptions.ItemNotAvailableException;
+import com.cg.ecom.exceptions.ProductOutStockException;
 import com.cg.ecom.repository.OrdersRepository;
+import com.cg.ecom.repository.ProductItemsRepository;
 import com.cg.ecom.service.OrdersService;
 
 @Service
 public class OrdersServiceImpl implements OrdersService {
 	@Autowired
 	private OrdersRepository ordersRepository;
+	
+	@Autowired
+	private ProductItemsRepository productItemsRepository;
 
 	@Override
-	public OrdersDTO addOrders(OrdersDTO ordersDTO) {
-
+	public OrdersDTO addOrders(OrdersDTO ordersDTO)  throws CartIdAlreadyExistsException
+	{
+		
+//		// Check if the cart ID already exists
+	    boolean existingOrder = ordersRepository.existsByCartId(ordersDTO.getCartId());
+	    
+	    if (existingOrder) 
+	    {
+	       
+	    	 throw new CartIdAlreadyExistsException();
+	    }
+//	    else {
+	    	
 		Orders orders = new Orders();
+		int productId = ordersDTO.getProductId();
+		
+		ProductItems productItem = productItemsRepository.findById(productId).orElse(null);
+		if(ordersDTO.getQuantity() <= productItem.getQuantity()) 
+		{
+		
 		Customers cust = new Customers();
 		Cart cart = new Cart();
 		cart.setCartId(ordersDTO.getCartId());
@@ -35,25 +60,27 @@ public class OrdersServiceImpl implements OrdersService {
 		orders.setCustomerId(cust);
 //		orders.setDate(ordersDTO.getDate());
 		orders.setDeliveryAddress(ordersDTO.getDeliveryAddress());
-		orders.setStatus(ordersDTO.getStatus());
-		orders.setCartId(ordersDTO.getCartId());
+//		orders.setStatus(ordersDTO.getStatus());
+//		orders.setCartId(ordersDTO.getCartId());
 
 		ProductSupplier rest = new ProductSupplier();
 		rest.setProductSupplierId(ordersDTO.getProductSupplierId());
 		orders.setProductSuppliers(rest);
 //		orders.setDate(ordersDTO.getDate());
 		orders.setDeliveryAddress(ordersDTO.getDeliveryAddress());
-		orders.setStatus(ordersDTO.getStatus());
-		orders.setCartId(ordersDTO.getCartId());
+//		orders.setStatus(ordersDTO.getStatus());
+//		orders.setCartId(ordersDTO.getCartId());
 
 		Orders ordersave = ordersRepository.save(orders);
 		ordersDTO.setOrderId(ordersave.getOrderId());
 		return ordersDTO;
 
 //		Customers customer = customersRepository.findById(ordersDTO.getCustomerId()).get();
-
-
-	}
+		}
+		throw new ProductOutStockException();
+	    }
+//	}
+	
 
 	@Override
 	public OrdersDTO updateOrders(OrdersDTO ordersDTO) {
@@ -67,9 +94,9 @@ public class OrdersServiceImpl implements OrdersService {
 		orders.setCustomerId(cust);
 		//orders.setDate(ordersDTO.getDate());
 		orders.setDeliveryAddress(ordersDTO.getDeliveryAddress());
-		orders.setStatus(ordersDTO.getStatus());
+//		orders.setStatus(ordersDTO.getStatus());
 		orders.setOrderId(ordersDTO.getOrderId());
-		orders.setCartId(ordersDTO.getCartId());
+//		orders.setCartId(ordersDTO.getCartId());
 
 		ordersRepository.save(orders);
 		return ordersDTO;

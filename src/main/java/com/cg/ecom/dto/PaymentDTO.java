@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.cg.ecom.entity.Orders;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
@@ -17,7 +18,9 @@ public class PaymentDTO {
 	private int cartId;
 	private int orderId;
 	private int productId;
-
+	
+	@ApiModelProperty(value = "don't enter in this filed")
+	private long totalPrice;
 
 
 }

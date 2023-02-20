@@ -17,6 +17,9 @@ public class OrdersDTO {
 	private int customerId;
 	private int productSupplierId;
 	private int cartId;
+	private int productId;
+	private int quantity;
+	
 
 
 	

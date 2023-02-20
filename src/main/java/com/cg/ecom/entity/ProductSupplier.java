@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class ProductSupplier {
 	 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int productSupplierId;
 	
 	private String productSupplierName;

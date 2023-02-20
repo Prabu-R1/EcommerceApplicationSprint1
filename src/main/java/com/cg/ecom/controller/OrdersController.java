@@ -1,6 +1,7 @@
 package com.cg.ecom.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.ecom.dto.OrdersDTO;
+import com.cg.ecom.entity.Orders;
+import com.cg.ecom.exceptions.CartIdAlreadyExistsException;
 import com.cg.ecom.exceptions.ItemNotAvailableException;
+import com.cg.ecom.repository.OrdersRepository;
 import com.cg.ecom.service.OrdersService;
 
 
@@ -26,13 +30,22 @@ public class OrdersController {
 	@Autowired
 	public OrdersService ordersService;
 	
+	@Autowired
+	public OrdersRepository ordersRepository;
+	
 	@PostMapping("/addOrders")
 	public ResponseEntity<OrdersDTO> addOrders(@RequestBody OrdersDTO ordersDTO){
+		
+		Optional<Orders> existingOrder = ordersRepository.findById(ordersDTO.getCartId());
+	    if (!existingOrder.isPresent()) 
+	    {
 		
 			OrdersDTO orders = ordersService.addOrders(ordersDTO);
 			return ResponseEntity.ok(orders);
 		
 	}
+	    throw new CartIdAlreadyExistsException();
+	    }
 
 	@GetMapping("/fetchOrderById/{id}")
 	public ResponseEntity<OrdersDTO> getOrderById(@PathVariable int id){

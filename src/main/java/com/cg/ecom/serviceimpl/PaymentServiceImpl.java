@@ -38,40 +38,12 @@ public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	private ProductItemsRepository productItemsRepository;
 	
-//	@Autowired
+
 	private ProductItems productItems = new ProductItems();
 	
-//	@Autowired
+
 	private Cart cart = new Cart();
 
-	//////////////////////////////////
-//	@Override
-//	public PaymentDTO addPayment(PaymentDTO paymentDTO) {
-//
-//		Payment payment = new Payment();
-//		Cart cart = new Cart();
-//		cart.setCartId(paymentDTO.getPaymentId());
-//		payment.setCartId(cart);
-//		payment.setPaymentId(paymentDTO.getPaymentId());
-//		payment.setPaymentDate(paymentDTO.getPaymentDate());
-//		payment.setPaymentType(paymentDTO.getPaymentType());
-//		payment.setPaymentStatus(paymentDTO.getPaymentStatus());
-//		
-//        if(paymentDTO.getPaymentStatus().equalsIgnoreCase("Success")) 
-//        {
-//        	productItems.setQuantity(productItems.getQuantity()- cart.getQuantity());
-//        	Cart cartSave = cartRepository.save(cart);
-//    		Payment paymentsave = paymentRepository.save(payment);
-//    		paymentDTO.setPaymentId(paymentsave.getPaymentId());
-//    		paymentDTO.setCartId(cartSave.getCartId());
-//    		return paymentDTO;
-//        }
-//        
-//        throw new PaymentNotFoundException();
-//		
-//	}
-	
-	//////////////////////////////////////////////////////
 	
 	@Override
 	public PaymentDTO addPayment(PaymentDTO paymentDTO) {
@@ -79,33 +51,63 @@ public class PaymentServiceImpl implements PaymentService {
 	    Cart cart = new Cart();
 	    Orders order = new  Orders();
 	    
-	    order.setOrderId(paymentDTO.getOrderId());
-	    payment.setOrderId(order);
-	    cart.setCartId(paymentDTO.getCartId());
-	    payment.setCartId(cart);
-	    payment.setPaymentId(paymentDTO.getPaymentId());
-	    payment.setPaymentDate(paymentDTO.getPaymentDate());
-	    payment.setPaymentType(paymentDTO.getPaymentType());
-	    payment.setPaymentStatus(paymentDTO.getPaymentStatus());
+	    
 
-	    if (paymentDTO.getPaymentStatus().equalsIgnoreCase("Success")) {
+	    if (paymentDTO.getPaymentStatus().equalsIgnoreCase("Success")) 
+	    
+	    {
 	        int productId = paymentDTO.getProductId();
 	        ProductItems productItem = productItemsRepository.findById(productId).orElse(null);
+	        
+	        
+	        Cart cart2 = cartRepository.findById(paymentDTO.getCartId()).orElse(null);
+	        
 	        if (productItem != null) {
-	            int updatedQuantity = productItem.getQuantity() - cart.getQuantity();
+	        	
+	        	order.setOrderId(paymentDTO.getOrderId());
+	    	    payment.setOrderId(order);
+	    	    cart.setCartId(paymentDTO.getCartId());
+	    	    payment.setCartId (cart);
+	    	    payment.setPaymentId(paymentDTO.getPaymentId());
+	    	    payment.setPaymentDate(paymentDTO.getPaymentDate());
+	    	    payment.setPaymentType(paymentDTO.getPaymentType());
+	    	    payment.setPaymentStatus(paymentDTO.getPaymentStatus());
+	        	
+	    	 // Get the total price of the order
+	            int totalPrice = productItem.getPrice() * cart2.getQuantity();
+	            payment.setTotalPrice(totalPrice);
+	            paymentDTO.setTotalPrice(totalPrice);
+	    	    
+	            int updatedQuantity = ((productItem.getQuantity())-(cart2.getQuantity()));
 	            productItem.setQuantity(updatedQuantity);
 	            productItemsRepository.save(productItem);
-	            Cart cartSave = cartRepository.save(cart);
+	            
 	            Payment paymentSave = paymentRepository.save(payment);
-	            Orders orderSave = ordersRepository.save(order);
 	            paymentDTO.setPaymentId(paymentSave.getPaymentId());
-	            paymentDTO.setCartId(cartSave.getCartId());
-	            paymentDTO.setOrderId(orderSave.getCartId());
+	            
+	            ///////////////
+//	            Orders orderSave = ordersRepository.save(order);
+//	            Cart cartSave = cartRepository.save(cart);
+//	            paymentDTO.setCartId(cartSave.getCartId());
+//	            paymentDTO.setOrderId(orderSave.getCartId());
+	            /////////////////
+	            
+	            
+	            
+
+	           
 	            return paymentDTO;
-	        } else {
+	            
+	        } 
+	        
+	        else 
+	        {
 	            throw new ItemNotAvailableException();
 	        }
-	    } else {
+	    } 
+	    
+	    else
+	    {
 	        throw new PaymentNotFoundException();
 	    }
 	}
