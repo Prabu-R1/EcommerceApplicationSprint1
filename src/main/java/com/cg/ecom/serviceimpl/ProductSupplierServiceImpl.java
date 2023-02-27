@@ -95,7 +95,7 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 	@Override
 	public List<ProductSupplierDTO> findAll() {
 
-		Iterable<ProductSupplier> productSupplier = productSupplierRepository.findAll();
+		List<ProductSupplier> productSupplier = productSupplierRepository.findAll();
 		List<ProductSupplierDTO> dtos = new ArrayList<>();
 		for (ProductSupplier productSupplier1 : productSupplier) {
 			ProductSupplierDTO dto = new ProductSupplierDTO();

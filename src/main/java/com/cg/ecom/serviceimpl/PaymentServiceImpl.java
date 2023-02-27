@@ -1,5 +1,5 @@
 package com.cg.ecom.serviceimpl;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,8 +44,9 @@ public class PaymentServiceImpl implements PaymentService {
 
 	private Cart cart = new Cart();
 
-	
+		
 	@Override
+	@Transactional
 	public PaymentDTO addPayment(PaymentDTO paymentDTO) {
 	    Payment payment = new Payment();
 	    Cart cart = new Cart();
@@ -74,28 +75,22 @@ public class PaymentServiceImpl implements PaymentService {
 	    	    payment.setPaymentStatus(paymentDTO.getPaymentStatus());
 	        	
 	    	 // Get the total price of the order
-	            int totalPrice = productItem.getPrice() * cart2.getQuantity();
+	    	    ////////////////////
+//	            int totalPrice = productItem.getPrice() * cart2.getQuantity();
+	            
+	            Long totalPrice = paymentRepository.findTotalPriceByCustomerId(paymentDTO.getCustomerId());
 	            payment.setTotalPrice(totalPrice);
 	            paymentDTO.setTotalPrice(totalPrice);
-	    	    
+
+	            
 	            int updatedQuantity = ((productItem.getQuantity())-(cart2.getQuantity()));
 	            productItem.setQuantity(updatedQuantity);
 	            productItemsRepository.save(productItem);
 	            
+//	            paymentRepository.updateProductItemsQuantityByCustomerId(paymentDTO.getCustomerId());
+	            
 	            Payment paymentSave = paymentRepository.save(payment);
 	            paymentDTO.setPaymentId(paymentSave.getPaymentId());
-	            
-	            ///////////////
-//	            Orders orderSave = ordersRepository.save(order);
-//	            Cart cartSave = cartRepository.save(cart);
-//	            paymentDTO.setCartId(cartSave.getCartId());
-//	            paymentDTO.setOrderId(orderSave.getCartId());
-	            /////////////////
-	            
-	            
-	            
-
-	           
 	            return paymentDTO;
 	            
 	        } 
@@ -139,7 +134,7 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public List<PaymentDTO> findAll() {
 
-		Iterable<Payment> payment = paymentRepository.findAll();
+		List<Payment> payment = paymentRepository.findAll();
 		List<PaymentDTO> dtos = new ArrayList<>();
 		for (Payment payments : payment) {
 			PaymentDTO dto = new PaymentDTO();

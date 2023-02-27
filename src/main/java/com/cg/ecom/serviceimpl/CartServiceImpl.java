@@ -83,7 +83,7 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<CartDTO> findAll() {
 
-		Iterable<Cart> cart = cartRepository.findAll();
+		List<Cart> cart = cartRepository.findAll();
 		List<CartDTO> dtos = new ArrayList<>();
 		for (Cart carts : cart) {
 			CartDTO dto = new CartDTO();

@@ -38,7 +38,7 @@ public class Orders {
 	@JoinColumn(name = "productsup_fk")
 	private ProductSupplier productSuppliers;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "Order_cart_fk")
 	private  Cart cart;
 	

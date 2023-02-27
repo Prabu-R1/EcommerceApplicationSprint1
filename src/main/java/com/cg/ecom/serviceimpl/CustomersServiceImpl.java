@@ -17,18 +17,18 @@ public class CustomersServiceImpl implements CustomersService {
 	@Autowired
 	private CustomersRepository customerRepository;
 	
-//	@Autowired
-//	private UserRepository userRepository;
-
-	 public void  CustomersDTO() {
-	        for (int i = 100; i <= 200; i++) {
-	        	Customers entity = new Customers();
-	            int counter = 0;
-				entity.setCustomerId(counter++);
-	            // set other fields if necessary
-				customerRepository.save(entity);
-	        }
-	    }
+////	@Autowired
+////	private UserRepository userRepository;
+//
+//	 public void  CustomersDTO() {
+//	        for (int i = 100; i <= 200; i++) {
+//	        	Customers entity = new Customers();
+//	            int counter = 0;
+//				entity.setCustomerId(counter++);
+//	            // set other fields if necessary
+//				customerRepository.save(entity);
+//	        }
+//	    }
 
 	@Override
 	public CustomersDTO addCustomers(CustomersDTO customersDto) {
@@ -86,7 +86,7 @@ public class CustomersServiceImpl implements CustomersService {
 	@Override
 	public List<CustomersDTO> findAll() {
 		
-		Iterable<Customers> customers = customerRepository.findAll();
+		List<Customers> customers = customerRepository.findAll();
 		List<CustomersDTO> dtos = new ArrayList<>();
 		for (Customers customer : customers) {
 			CustomersDTO dto = new CustomersDTO();

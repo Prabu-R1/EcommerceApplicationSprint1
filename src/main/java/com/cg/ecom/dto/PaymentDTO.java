@@ -18,6 +18,7 @@ public class PaymentDTO {
 	private int cartId;
 	private int orderId;
 	private int productId;
+	private int customerId;
 	
 	@ApiModelProperty(value = "don't enter in this filed")
 	private long totalPrice;

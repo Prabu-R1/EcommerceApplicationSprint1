@@ -37,6 +37,12 @@ public class Cart {
 	@JoinColumn(name = "customer_cart_fk")
 	private Customers customers;
 	
+	@OneToOne
+	@JoinColumn(name = "cart_product_fk")
+	private ProductItems productItems;
+
+}
+	
 //	@Transient	
 //	private List<ProductItems> productItems;
 	
@@ -44,8 +50,4 @@ public class Cart {
 //	@JoinColumn(name = "cart_product_fk")
 //	private List<ProductItems> productItems;
 	
-	@OneToOne
-	@JoinColumn(name = "cart_product_fk")
-	private ProductItems productItems;
-
-}
+	

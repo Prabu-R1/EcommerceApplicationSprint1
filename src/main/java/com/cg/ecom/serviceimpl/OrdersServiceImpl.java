@@ -35,13 +35,13 @@ public class OrdersServiceImpl implements OrdersService {
 	{
 		
 //		// Check if the cart ID already exists
-	    boolean existingOrder = ordersRepository.existsByCartId(ordersDTO.getCartId());
-	    
-	    if (existingOrder) 
-	    {
-	       
-	    	 throw new CartIdAlreadyExistsException();
-	    }
+//	    boolean existingOrder = ordersRepository.existsByCartId(ordersDTO.getCartId());
+//	    
+//	    if (existingOrder) 
+//	    {
+//	       
+//	    	 throw new CartIdAlreadyExistsException();
+//	    }
 //	    else {
 	    	
 		Orders orders = new Orders();
@@ -125,7 +125,7 @@ public class OrdersServiceImpl implements OrdersService {
 	@Override
 	public List<OrdersDTO> findAll() {
 
-		Iterable<Orders> orders = ordersRepository.findAll();
+		List<Orders> orders = ordersRepository.findAll();
 		List<OrdersDTO> dtos = new ArrayList<>();
 		for (Orders order : orders) {
 			OrdersDTO dto = new OrdersDTO();
