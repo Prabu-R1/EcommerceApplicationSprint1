@@ -33,7 +33,6 @@ public class ProductSupplierController {
 	public CustomersService customersService;
 	
 
-/////////////
 @GetMapping("/fetchCustomersById/{id}")
 public ResponseEntity<CustomersDTO> getCustomersById(@PathVariable int id) 
 {
@@ -52,7 +51,6 @@ public ResponseEntity<List<CustomersDTO>> getAllCustomers() {
 List<CustomersDTO> list = customersService.findAll();
 return ResponseEntity.ok(list);
 }
-//////////////
 	
 	@PostMapping("/addProductSuppliers")
 	public ResponseEntity<ProductSupplierDTO> addProductSupplier(@RequestBody ProductSupplierDTO productSupplierDTO) {

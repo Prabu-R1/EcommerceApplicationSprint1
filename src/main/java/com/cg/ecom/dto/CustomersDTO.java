@@ -10,10 +10,6 @@ public class CustomersDTO {
 	private String address;
 	private Long mobilenumber;
 	private String emailId;
-	//////////////
-//	private String password;
-//	private String username;
-//	private int userId;
 
 	
 }

@@ -13,11 +13,10 @@ public class CartDTO {
 	
 	private int cartId;
 	private int quantity;
-//	private double price;
-	/////////////////
+
 	private int customerId;
 	private int productId;
-//	private int productSupplierId;
+
 
 
 }

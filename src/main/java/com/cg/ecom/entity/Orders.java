@@ -23,12 +23,11 @@ import lombok.NoArgsConstructor;
 public class Orders {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orderId;
-//	private LocalDate date;
-//	private String status;
+
 	private String deliveryAddress;
-//	private int cartId;
+
 
 	@ManyToOne
 	@JoinColumn(name = "customer_order_fk")

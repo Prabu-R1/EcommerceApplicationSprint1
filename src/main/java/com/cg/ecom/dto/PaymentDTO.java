@@ -14,7 +14,6 @@ public class PaymentDTO {
 	private LocalDate paymentDate;
 	private String paymentType;
 	private String paymentStatus;
-	///////////
 	private int cartId;
 	private int orderId;
 	private int productId;

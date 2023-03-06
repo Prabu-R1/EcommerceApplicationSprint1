@@ -15,9 +15,7 @@ public class ProductSupplierDTO {
 	private Long contactNo;
 	
 	private String emailId;
-//	private String username;
-//	private String password;
-//	private int userId;
+
 
 
 }

@@ -13,7 +13,6 @@ public class ProductItemsDTO {
 	private String ProductName;
 	private int price;
 	private int quantity;
-	///////////
 	private int productSupplierId;
 
 

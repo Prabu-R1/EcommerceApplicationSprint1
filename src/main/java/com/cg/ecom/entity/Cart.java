@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 public class Cart {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cartId;
 	private int quantity;
 
@@ -42,12 +42,5 @@ public class Cart {
 	private ProductItems productItems;
 
 }
-	
-//	@Transient	
-//	private List<ProductItems> productItems;
-	
-//	@OneToMany
-//	@JoinColumn(name = "cart_product_fk")
-//	private List<ProductItems> productItems;
-	
+
 	

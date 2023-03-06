@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class Payment {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int paymentId;
 	private LocalDate paymentDate;
 	private String paymentType;
@@ -39,9 +39,7 @@ public class Payment {
 	@JoinColumn(name="payment_order_fk")
 	private Orders orderId ;
 	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name="payment_product_fk")
-//	private List<ProductItems> productItems ;
+
 	
 	
 

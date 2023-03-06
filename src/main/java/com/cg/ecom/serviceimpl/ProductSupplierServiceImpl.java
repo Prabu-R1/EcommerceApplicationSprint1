@@ -20,36 +20,19 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 	@Autowired
 	private ProductSupplierRepository productSupplierRepository;
 
-//	 public void  ProductSupplierDTO() {
-//	        for (int i = 100; i <= 200; i++) {
-//	        	ProductSupplier entity = new ProductSupplier();
-//	            int counter = 0;
-//				entity.setProductSupplierId(i);
-//	            // set other fields if necessary
-//				productSupplierRepository.save(entity);
-//	        }
-//	    }
+
 	
 	
 	@Override
 	public ProductSupplierDTO addProductSupplier(ProductSupplierDTO productSupplierDto) {
 
-//		User user=new User();
-//		user.setPassword(productSupplierDto.getPassword());
-//		user.setRole("OWNER");
-//		user.setUsername(productSupplierDto.getUsername());		
-
-//		User userSave=userRepository.save(user);
 		ProductSupplier productSupplier = new ProductSupplier();
-//		productSupplier.setUserId(userSave);
 		productSupplier.setProductSupplierName(productSupplierDto.getProductSupplierName());
 		productSupplier.setEmailId(productSupplierDto.getEmailId());
 		productSupplier.setContactNo(productSupplierDto.getContactNo());
-        //productSupplier.setId(productSupplierDto.productSupplierId());
         productSupplier.setLocation(productSupplierDto.getLocation());
 		
         ProductSupplier productSupplierave=productSupplierRepository.save(productSupplier);
-//        productSupplierDto.setUserId(userSave.getUserId());
         productSupplierDto.setProductSupplierId(productSupplierave.getProductSupplierId());
 		return productSupplierDto;
 	}
@@ -58,9 +41,7 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 	public ProductSupplierDTO updateProductSupplier(ProductSupplierDTO productSupplierDTO) {
 
 		ProductSupplier productSupplier = new ProductSupplier();
-//		User user=new User();
-//		user.setUserId(productSupplierDTO.getUserId());
-//		productSupplier.setUserId(user);
+
 		productSupplier.setProductSupplierId(productSupplierDTO.getProductSupplierId());
 		productSupplier.setProductSupplierName(productSupplierDTO.getProductSupplierName());
 		productSupplier.setEmailId(productSupplierDTO.getEmailId());
@@ -77,7 +58,7 @@ public class ProductSupplierServiceImpl implements ProductSupplierService {
 		ProductSupplier productSupplier = new ProductSupplier();
 		productSupplier.setProductSupplierId(productSupplierDTO.getProductSupplierId());
 		productSupplierRepository.delete(productSupplier);
-		return true;//write logic
+		return true;
 	}
 
 	@Override

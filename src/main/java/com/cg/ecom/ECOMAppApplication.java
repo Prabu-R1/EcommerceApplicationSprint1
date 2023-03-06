@@ -12,6 +12,9 @@ public class ECOMAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ECOMAppApplication.class, args);
+		
+		
+		System.out.println("Application started successfully");
 	}
 
 }
